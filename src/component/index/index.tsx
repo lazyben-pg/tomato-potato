@@ -1,6 +1,10 @@
 import * as React from 'react'
 import axios from '../../config/axios'
-import { Button } from 'antd'
+import { Menu, Dropdown } from 'antd'
+import { DownOutlined, LoginOutlined, SettingOutlined } from '@ant-design/icons';
+import history from '../../config/history'
+import IconFont from '../../iconfont/iconfont'
+import './index.scss'
 
 interface IIndexProps {
   history: any
@@ -9,6 +13,22 @@ interface IIndexProps {
 interface IIndexState {
   user: any
 }
+
+const logout = () => {
+  localStorage.setItem('x-token', '')
+  history.push('/login')
+}
+
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <span><SettingOutlined />个人设置</span>
+    </Menu.Item>
+    <Menu.Item>
+      <span onClick={logout}><LoginOutlined />注销</span>
+    </Menu.Item>
+  </Menu>
+);
 
 class Index extends React.Component<IIndexProps, IIndexState> {
   constructor(props: any) {
@@ -20,18 +40,23 @@ class Index extends React.Component<IIndexProps, IIndexState> {
   getMe = async () => {
     await axios.get('/me').then(res => { this.setState({ user: res.data }) })
   }
-  logout = () => {
-    localStorage.setItem('x-token', '')
-    this.props.history.push('/login')
-  }
   async componentDidMount() {
     await this.getMe()
   }
   render() {
     return (
-      <div>
-        <p>hello {this.state && this.state.user.account}</p>
-        <Button onClick={this.logout}>登出</Button>
+      <div id='index'>
+        <header>
+          <span className="logo-wraper">
+            <IconFont type='icon-time' className="logo" />
+            <span className='logo-text'>Tomato-Potato</span>
+          </span>
+          <Dropdown overlay={menu}>
+            <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+              {this.state.user.account} <DownOutlined />
+            </span>
+          </Dropdown>
+        </header>
       </div>
     )
   }
