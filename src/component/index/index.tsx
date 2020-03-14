@@ -4,6 +4,7 @@ import { Menu, Dropdown } from 'antd'
 import { DownOutlined, LoginOutlined, SettingOutlined } from '@ant-design/icons';
 import history from '../../config/history'
 import IconFont from '../../iconfont/iconfont'
+import Todo from '../todo/todo'
 import './index.scss'
 
 interface IIndexProps {
@@ -57,6 +58,7 @@ class Index extends React.Component<IIndexProps, IIndexState> {
             </span>
           </Dropdown>
         </header>
+        <Todo />
       </div>
     )
   }
