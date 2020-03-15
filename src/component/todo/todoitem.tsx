@@ -2,6 +2,9 @@ import React from 'react'
 import { Checkbox } from 'antd'
 import classnames from 'classnames'
 import { DeleteOutlined, EnterOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux'
+import { updateTodo, editTodo } from '../../redux/reducers/actions'
+import axios from '../../config/axios'
 import './todoitem.scss'
 
 interface ITodoItemProps {
@@ -9,12 +12,12 @@ interface ITodoItemProps {
   description: string,
   editing: boolean,
   completed: boolean,
-  updateTodo: (id: number, params: any) => void,
-  onEditing: (id: number) => void
+  updateTodo: (params: any) => void,
+  editTodo: (id: number) => void
 }
 
 interface ITodoItemState {
-  editText: string
+  editText: string,
 }
 
 class Todoitem extends React.Component<ITodoItemProps, ITodoItemState> {
@@ -25,21 +28,28 @@ class Todoitem extends React.Component<ITodoItemProps, ITodoItemState> {
     }
   }
 
+  updateTodo = async (id: number, params: any) => {
+    await axios.put(`todos/${id}`, params)
+      .then(res => { this.props.updateTodo(res.data.resource) })
+      .catch(err => { throw new (err) })
+  }
+
+
   onChecked = (e: any) => {
-    this.props.updateTodo(this.props.id, { 'completed': e.target.checked })
+    this.updateTodo(this.props.id, { 'completed': e.target.checked })
   }
 
   onEditing = () => {
-    this.props.onEditing(this.props.id)
+    this.props.editTodo(this.props.id)
   }
 
   onDeleted = () => {
-    this.props.updateTodo(this.props.id, { 'deleted': true })
+    this.updateTodo(this.props.id, { 'deleted': true })
   }
 
   onUpdateDescription = () => {
     if (this.state.editText !== '' && this.props.description !== this.state.editText)
-      this.props.updateTodo(this.props.id, { 'description': this.state.editText })
+      this.updateTodo(this.props.id, { 'description': this.state.editText })
   }
 
 
@@ -90,4 +100,13 @@ class Todoitem extends React.Component<ITodoItemProps, ITodoItemState> {
   }
 }
 
-export default Todoitem
+const mapStateToProps = (state: any, ownState: any) => ({
+  ...ownState
+})
+
+const mapDispatchToProps = {
+  updateTodo,
+  editTodo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todoitem)

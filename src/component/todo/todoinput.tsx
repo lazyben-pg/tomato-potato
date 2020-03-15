@@ -1,16 +1,20 @@
 import React from 'react'
 import { Input } from 'antd'
 import { EnterOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux'
+import { addTodo } from '../../redux/reducers/actions'
+import axios from '../../config/axios'
 
 interface ITodoinputState {
-  description: string
+  description: string,
 }
 
-interface ITodoinputProps {
-  addTodo: any
+interface ITodeInputProps {
+  addTodo: (params: any) => {}
 }
 
-class Todoinput extends React.Component<ITodoinputProps, ITodoinputState> {
+
+class Todoinput extends React.Component<any, ITodoinputState> {
   constructor(props: any) {
     super(props)
     this.state = {
@@ -18,7 +22,7 @@ class Todoinput extends React.Component<ITodoinputProps, ITodoinputState> {
     }
   }
 
-  addTodo = (e: any) => {
+  onKeyUp = (e: any) => {
     const { description } = this.state
     if (e.keyCode === 13 && description !== '') {
       this.postTodo()
@@ -26,9 +30,13 @@ class Todoinput extends React.Component<ITodoinputProps, ITodoinputState> {
   }
 
   postTodo = async () => {
-    const { description } = this.state
-    await this.props.addTodo({ description })
-    this.setState({ 'description': '' })
+    if (this.state.description === '') return
+    await axios.post('/todos', { description: this.state.description })
+      .then(res => {
+        this.props.addTodo(res.data.resource)
+        this.setState({ description: '' })
+      })
+      .catch(e => { throw new Error(e) })
   }
 
   render() {
@@ -39,11 +47,19 @@ class Todoinput extends React.Component<ITodoinputProps, ITodoinputState> {
         placeholder="输入想要开始的任务"
         suffix={suffix}
         onChange={e => { this.setState({ 'description': e.target.value }) }}
-        onKeyUp={this.addTodo}
+        onKeyUp={this.onKeyUp}
         value={description}
       />
     )
   }
 }
 
-export default Todoinput
+const mapStateToProps = (state: any, ownState: any) => ({
+  ...ownState
+})
+
+const mapDispatchToProps = {
+  addTodo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todoinput)

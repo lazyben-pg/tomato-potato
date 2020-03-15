@@ -5,10 +5,13 @@ import { DownOutlined, LoginOutlined, SettingOutlined } from '@ant-design/icons'
 import history from '../../config/history'
 import IconFont from '../../iconfont/iconfont'
 import Todo from '../todo/todo'
+import { connect } from 'react-redux'
+import { initTodos } from '../../redux/reducers/actions'
 import './index.scss'
 
 interface IIndexProps {
-  history: any
+  history: any,
+  initTodos: (params: any[]) => {}
 }
 
 interface IIndexState {
@@ -41,8 +44,21 @@ class Index extends React.Component<IIndexProps, IIndexState> {
   getMe = async () => {
     await axios.get('/me').then(res => { this.setState({ user: res.data }) })
   }
-  async componentDidMount() {
-    await this.getMe()
+
+  getTodo = async () => {
+    await axios.get('todos')
+      .then(res => {
+        const todos = res.data.resources.map((t: any) => {
+          return Object.assign({}, t, { editing: false })
+        })
+        this.props.initTodos(todos)
+      })
+      .catch(e => { throw new Error(e) })
+  }
+
+  componentDidMount() {
+    this.getMe()
+    this.getTodo()
   }
   render() {
     return (
@@ -66,4 +82,12 @@ class Index extends React.Component<IIndexProps, IIndexState> {
   }
 }
 
-export default Index
+const mapDispatchToProps = {
+  initTodos
+}
+
+const mapStateToProps = (state: any, ownProps: any) => ({
+  ...ownProps
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index)
