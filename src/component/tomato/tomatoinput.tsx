@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Input } from 'antd'
+import Countdown from './countdown'
 import axios from '../../config/axios'
 
 interface ITomatoinputProps {
@@ -25,7 +26,7 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
   }
 
   addTomato = () => {
-    this.props.addTomato({ 'duration': 60 * 1000 })
+    this.props.addTomato({ 'duration': 60 * 1000 * 5 })
   }
 
   updateTomato = async (params: any) => {
@@ -62,7 +63,7 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
       } else {
         html = (
           <div className="countdownwrapper">
-            count
+            <Countdown timer={duration - now + startedAt} />
           </div>
         )
       }
@@ -70,7 +71,6 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
     return (
       <div id="tomatoinput">
         {html}
-        {this.props.unfishedTomato && this.props.unfishedTomato.created_at}
       </div>
     )
   }
