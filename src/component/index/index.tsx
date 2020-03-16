@@ -6,13 +6,14 @@ import history from '../../config/history'
 import IconFont from '../../iconfont/iconfont'
 import Todo from '../todo/todo'
 import { connect } from 'react-redux'
-import { initTodos } from '../../redux/reducers/actions'
+import { initTodos, initTomatoes } from '../../redux/reducers/actions'
 import Tomato from '../tomato/tomato'
 import './index.scss'
 
 interface IIndexProps {
   history: any,
-  initTodos: (params: any[]) => {}
+  initTodos: (params: any[]) => {},
+  initTomatoes: (params: any[]) => {}
 }
 
 interface IIndexState {
@@ -57,9 +58,18 @@ class Index extends React.Component<IIndexProps, IIndexState> {
       .catch(e => { throw new Error(e) })
   }
 
+  getTomatoes = async () => {
+    await axios.get('tomatoes')
+      .then(res => {
+        this.props.initTomatoes(res.data.resources)
+      })
+      .catch(e => { throw new Error(e) })
+  }
+
   componentDidMount() {
     this.getMe()
     this.getTodo()
+    this.getTomatoes()
   }
   render() {
     return (
@@ -85,7 +95,8 @@ class Index extends React.Component<IIndexProps, IIndexState> {
 }
 
 const mapDispatchToProps = {
-  initTodos
+  initTodos,
+  initTomatoes
 }
 
 const mapStateToProps = (state: any, ownProps: any) => ({
