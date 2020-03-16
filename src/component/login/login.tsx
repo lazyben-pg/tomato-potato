@@ -37,7 +37,7 @@ class Login extends React.Component<ISignupProps, ISignupState> {
       password,
     })
       .then((res) => { this.props.history.push('index') })
-      .catch(err => { console.log(err) })
+      .catch(err => { throw new (err) })
   }
 
   render() {

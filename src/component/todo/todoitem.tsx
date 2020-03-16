@@ -55,7 +55,6 @@ class Todoitem extends React.Component<ITodoItemProps, ITodoItemState> {
 
   onKeyupUpdateDescription = (e: any) => {
     if (e.keyCode === 13) {
-      console.log('update')
       this.onUpdateDescription()
     }
   }

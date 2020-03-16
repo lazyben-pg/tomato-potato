@@ -7,6 +7,7 @@ import IconFont from '../../iconfont/iconfont'
 import Todo from '../todo/todo'
 import { connect } from 'react-redux'
 import { initTodos } from '../../redux/reducers/actions'
+import Tomato from '../tomato/tomato'
 import './index.scss'
 
 interface IIndexProps {
@@ -75,6 +76,7 @@ class Index extends React.Component<IIndexProps, IIndexState> {
           </Dropdown>
         </header>
         <main>
+          <Tomato />
           <Todo />
         </main>
       </div>

@@ -40,7 +40,7 @@ class Signup extends React.Component<ISignupProps, ISignupState> {
       password_confirmation
     })
       .then(() => { this.props.history.push('index') })
-      .catch(err => { console.log(err) })
+      .catch(err => { throw new (err) })
   }
 
   render() {
