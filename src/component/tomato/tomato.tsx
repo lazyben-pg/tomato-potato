@@ -1,12 +1,13 @@
 import React from 'react'
 import Tomatoinput from './tomatoinput'
 import axios from '../../config/axios'
-import { addTomato } from '../../redux/reducers/actions'
+import { addTomato, updateTomato } from '../../redux/reducers/actions'
 import { connect } from 'react-redux'
 import './tomato.scss'
 
 interface ITomatoProps {
   addTomato: (payload: any) => void,
+  updateTomato: (patload: any) => void,
   tomatoes: any[]
 }
 
@@ -25,17 +26,22 @@ class Tomato extends React.Component<ITomatoProps> {
     return this.props.tomatoes.filter((t: any) => !t.description && !t.ended_at && !t.aborted)[0]
   }
 
+  upDateTomato = (payload: any) => {
+    this.props.updateTomato(payload)
+  }
+
   render() {
     return (
       <div id="tomato">
-        <Tomatoinput addTomato={this.addTomato} />
+        <Tomatoinput addTomato={this.addTomato} unfishedTomato={this.unfinishedTomato} updateTomato={this.upDateTomato} />
       </div>
     )
   }
 }
 
 const mapDispatchToProps = {
-  addTomato
+  addTomato,
+  updateTomato
 }
 
 const mapStateToProps = (state: any, ownProps: any) => ({
