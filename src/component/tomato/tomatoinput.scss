@@ -1,0 +1,15 @@
+#tomatoinput {
+  > .inputwrapper,
+  > .countdownwrapper {
+    position: relative;
+  }
+  > .starttomatobtn {
+    width: 100%;
+  }
+  .cancle {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: #fff;
+  }
+}
