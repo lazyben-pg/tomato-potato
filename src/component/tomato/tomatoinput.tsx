@@ -26,7 +26,7 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
   }
 
   addTomato = () => {
-    this.props.addTomato({ 'duration': 60 * 1000 * 5 })
+    this.props.addTomato({ 'duration': 60 * 1000 })
   }
 
   updateTomato = async (params: any) => {
@@ -41,6 +41,10 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
       'ended_at': new Date()
     })
     this.setState({ 'description': '' })
+  }
+
+  finish = () => {
+    this.forceUpdate()
   }
 
   render() {
@@ -63,7 +67,7 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
       } else {
         html = (
           <div className="countdownwrapper">
-            <Countdown timer={duration - now + startedAt} />
+            <Countdown timer={duration - now + startedAt} finish={this.finish} />
           </div>
         )
       }

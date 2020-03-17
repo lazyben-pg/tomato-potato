@@ -1,7 +1,8 @@
 import React from 'react'
 
 interface ICountdownProps {
-  timer: number
+  timer: number,
+  finish: () => void
 }
 
 interface ICountdownState {
@@ -17,10 +18,16 @@ class Countdown extends React.Component<ICountdownProps, ICountdownState> {
   }
 
   componentDidMount() {
-    const timeId = setInterval(() => {
+    let timeId: NodeJS.Timeout
+    timeId = setInterval(() => {
       this.setState({ timer: this.state.timer - 1000 })
-      this.state.timer <= 0 && clearInterval(timeId)
+      this.state.timer < 1000 && this.finish(timeId)
     }, 1000)
+  }
+
+  finish = (timeId: NodeJS.Timeout) => {
+    this.props.finish()
+    clearInterval(timeId)
   }
 
   render() {
