@@ -47,7 +47,7 @@ class Tomatoinput extends React.Component<ITomatoinputProps, ITomatoinputState> 
     this.setState({ 'description': '' })
   }
 
-  countDownFinish = () => {                    //for countdown component
+  countDownFinish = () => {
     this.forceUpdate()
   }
 
