@@ -12,6 +12,7 @@ interface ITodoProps {
 class Todo extends React.Component<ITodoProps> {
   constructor(props: any) {
     super(props)
+    this.state = {}
   }
 
   get unDeletedTodos() {

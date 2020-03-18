@@ -17,6 +17,7 @@ interface ITomatoProps {
 class Tomato extends React.Component<ITomatoProps> {
   constructor(props: any) {
     super(props)
+    this.state = {}
   }
 
   addTomato = async (params: any) => {
