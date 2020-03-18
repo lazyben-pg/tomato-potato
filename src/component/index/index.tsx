@@ -86,11 +86,11 @@ class Index extends React.Component<IIndexProps, IIndexState> {
             </span>
           </Dropdown>
         </header>
-        <Statistics />
         <main>
           <Tomato />
           <Todo />
         </main>
+        <Statistics />
       </div>
     )
   }

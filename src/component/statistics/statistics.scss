@@ -2,5 +2,36 @@
   > ul {
     display: flex;
     justify-content: space-between;
+    .description {
+      color: #999;
+      font-size: 12px;
+    }
+    > li {
+      padding: 10px 10px 0 10px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ddd;
+      width: 33%;
+      position: relative;
+      > .history {
+        display: flex;
+        flex-direction: row;
+        > .count {
+          margin-left: 16px;
+          font-size: 35px;
+        }
+      }
+      > .progress {
+        font-size: 35px;
+        > .progress-img {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+      svg {
+        width: 100%;
+      }
+    }
   }
 }
