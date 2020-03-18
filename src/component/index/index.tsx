@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { initTodos, initTomatoes } from '../../redux/reducers/actions'
 import Tomato from '../tomato/tomato'
 import './index.scss'
+import Statistics from '../statistics/statistics';
 
 interface IIndexProps {
   history: any,
@@ -85,6 +86,7 @@ class Index extends React.Component<IIndexProps, IIndexState> {
             </span>
           </Dropdown>
         </header>
+        <Statistics />
         <main>
           <Tomato />
           <Todo />
