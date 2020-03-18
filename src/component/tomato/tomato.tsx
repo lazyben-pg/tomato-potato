@@ -22,7 +22,7 @@ class Tomato extends React.Component<ITomatoProps> {
 
   addTomato = async (params: any) => {
     await axios.post('/tomatoes', params)
-      .then(res => { console.log(res.data); this.props.addTomato(res.data.resource) })
+      .then(res => { this.props.addTomato(res.data.resource) })
       .catch(err => { throw new Error(err) })
   }
 
@@ -32,9 +32,7 @@ class Tomato extends React.Component<ITomatoProps> {
 
   get finishedTomatoes() {
     const finishedtomatoes = this.props.tomatoes.filter((t: any) => t.description && t.ended_at && !t.aborted)
-    console.log(finishedtomatoes)
     const obj = _.groupBy(finishedtomatoes, tomato => format(Date.parse(tomato.started_at), 'yyyy/MM/dd'))
-    console.log(obj)
     return obj
   }
 
