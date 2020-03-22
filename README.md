@@ -6,6 +6,8 @@
 
 技术栈：React | Redux | TypeScript | Sass | date-fns | lodash | axios
 
+使用体验：账号：bigben 密码：bigben | 或者自己注册一个
+
 ## 模块
 ### 全局预览
 
