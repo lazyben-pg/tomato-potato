@@ -7,10 +7,23 @@
 技术栈：React | Redux | TypeScript | Sass | date-fns | lodash | axios
 
 ## 模块
-### 全局
+### 全局预览
 
-<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='500' />
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='600' />
 
-### Potato
+### 番茄闹钟模块
 
-<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='300' />
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/potato.gif" width='400' />
+
+### 代办事模块
+
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/tomato.gif" width='400' />
+
+### 统计模块
+
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='600' />
+
+### 登陆登出模块
+
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/login.PNG" width='400' />
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/login.PNG" width='400' />
