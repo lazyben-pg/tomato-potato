@@ -8,6 +8,9 @@
 
 ## 模块
 ### 全局
-![image](https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG)
+
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='500' />
+
 ### Potato
-![image](https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/potato.gif)
+
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='300' />
