@@ -21,9 +21,9 @@
 
 ### 统计模块
 
-<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/all.PNG" width='600' />
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/tongji.PNG" width='600' />
 
 ### 登陆登出模块
 
 <img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/login.PNG" width='400' />
-<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/login.PNG" width='400' />
+<img src="https://github.com/Lazzben/tomato-potato/blob/master/__READMEIMG/signup.PNG" width='400' />
