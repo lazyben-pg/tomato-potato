@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/tomato-potato/static/css/main.9d441407.chunk.css",
+    "main.js": "/tomato-potato/static/js/main.3809c0a2.chunk.js",
+    "main.js.map": "/tomato-potato/static/js/main.3809c0a2.chunk.js.map",
+    "runtime-main.js": "/tomato-potato/static/js/runtime-main.3fe66e00.js",
+    "runtime-main.js.map": "/tomato-potato/static/js/runtime-main.3fe66e00.js.map",
+    "static/css/2.ca55a93c.chunk.css": "/tomato-potato/static/css/2.ca55a93c.chunk.css",
+    "static/js/2.edeb40d3.chunk.js": "/tomato-potato/static/js/2.edeb40d3.chunk.js",
+    "static/js/2.edeb40d3.chunk.js.map": "/tomato-potato/static/js/2.edeb40d3.chunk.js.map",
+    "index.html": "/tomato-potato/index.html",
+    "precache-manifest.d49050cdd446954c15d9a9ec199c65d9.js": "/tomato-potato/precache-manifest.d49050cdd446954c15d9a9ec199c65d9.js",
+    "service-worker.js": "/tomato-potato/service-worker.js",
+    "static/css/2.ca55a93c.chunk.css.map": "/tomato-potato/static/css/2.ca55a93c.chunk.css.map",
+    "static/css/main.9d441407.chunk.css.map": "/tomato-potato/static/css/main.9d441407.chunk.css.map",
+    "static/js/2.edeb40d3.chunk.js.LICENSE.txt": "/tomato-potato/static/js/2.edeb40d3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fe66e00.js",
+    "static/css/2.ca55a93c.chunk.css",
+    "static/js/2.edeb40d3.chunk.js",
+    "static/css/main.9d441407.chunk.css",
+    "static/js/main.3809c0a2.chunk.js"
+  ]
+}
